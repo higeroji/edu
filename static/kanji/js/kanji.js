@@ -772,6 +772,25 @@ var question1nen = [
     {q:"あさ 'はやく' でかける", ans:"早く"}
 ];
 
+var questionkosoado = [
+    //    {q:"", ans:""},
+    {q:"雨が降ってきた。(だから / しかし / それとも)、かさをさした。", ans:"だから"},
+    {q:"暑くなった。 (けれども / それで / さらに)、シャツをぬいだ。", ans:"それで"},
+    {q:"朝ごはんを食べた。(すると / ところが / それとも)、おなかがすいてきた。", ans:"ところが"},
+    {q:"昨日は早くねた。(それで / さらに / つまり)、今朝は早く目が覚めた。", ans:"それで"},
+    {q:"歌がうまい。(しかし / さらに / つまり)、とび箱も得意だ。", ans:"さらに"},
+    {q:"週末は、海へ行こうか。(しかし / それで / それとも)、山へ行こうか。", ans:"それとも"},
+    {q:"こちら父の姉です。(さらに / それで / つまり)、私のおばです。", ans:"つまり"},
+    {q:"雨がふってきた。(さらに / あるいは / それで)、かさをさした。", ans:"それで"},
+    {q:"雨がふってきた。(それで / さらに / しかし)、かさをささなかった。", ans:"しかし"},
+    {q:"雨がふってきた。(さらに / さて / あるいは)、風も強くなった。", ans:"さらに"},
+    {q:"週末は、海へ行こうか。(しかし / さて / あるいは)、山へ行こうか。", ans:"あるいは"},
+    {q:"そうじは終わった。(さらに / さて / あるいは)、ゲームでもしようかな。", ans:"さて"},
+    {q:"ありがとうございました。では、(こんにちは / さようなら)。", ans:"さようなら"},
+    {q:"昨日は早くねた。(でも / だから / つまり)、早く起きられなかった。", ans:"でも"},
+    {q:"雨が降った。(でも / だから / つまり)、兄はでかけた。", ans:"でも"}
+];
+
 var app = new Vue({
   el: '#app',
   data: {
@@ -858,6 +877,34 @@ var app = new Vue({
             }
             app.question = (count + 1) + ".　" + question1nen[labelSet[count]]['q'];
             answerSet.push(question1nen[labelSet[count]]);
+            count++;        
+            setTimeout(loop,10500)
+        }
+        loop();
+        app.answers = answerSet;
+      },
+      startkosoado: function() {
+        app.answers = [];
+        app.isCheck = 0;
+        var labelSet = [];
+        var answerSet = [];
+        var count = 0;
+
+        do {
+            var label = Math.floor( Math.random() * questionkosoado.length );
+            if(labelSet.indexOf(label) == -1) {
+                labelSet.push(label);
+            }
+        } while (labelSet.length != 10)
+
+        function loop(){
+            if(count > 9){
+                app.question = "おわり";
+                app.isCheck = 1;                
+                return;
+            }
+            app.question = (count + 1) + ".　" + questionkosoado[labelSet[count]]['q'];
+            answerSet.push(questionkosoado[labelSet[count]]);
             count++;        
             setTimeout(loop,10500)
         }
