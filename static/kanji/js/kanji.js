@@ -1,6 +1,50 @@
+var question5nen = [
+    //    {q:"", ans:""},
+    {q:"'どうとく' の時間", ans:"道徳"},
+    {q:"PTAの 'そうかい' がある", ans:"総会"},
+    {q:"カードゲームに 'きょうみ' がある", ans:"興味"},
+    {q:"チームを 'さいこう' する", ans:"再興"},
+    {q:"新聞の 'てんきよほう' は必ず読む", ans:"天気予報"},
+    {q:"花粉 'じょうほう' を調べる", ans:"情報"},
+    {q:"昨日の出来事を 'ほうこく' する", ans:"報告"},
+    {q:"'ゆうじょう' が芽生える", ans:"友情"},
+    {q:"'じょうねつ' がある", ans:"情熱"},
+    {q:"'かんじょう' を顔に出す", ans:"感情"},
+    {q:"'なさけ' は人のためならず", ans:"情け"},
+    {q:"二人の体重を 'くらべる'", ans:"比べる"},
+    {q:"身長と体重は必ずしも 'ひれい' しない", ans:"比例"},
+    {q:"両者を 'たいひ' する", ans:"対比"},
+    {q:"手荷物の 'ないよう' を申告する", ans:"内容"},
+    {q:"プラスチック製の 'ようき' を買う", ans:"容器"},
+    {q:"電車が 'こむ'", ans:"混む"},
+    {q:"コーヒーにミルクを 'まぜる'", ans:"混ぜる"},
+    {q:"カードを 'まぜあわせる'", ans:"交ぜ合わせる"},
+    {q:"塩と砂糖が 'まざる'", ans:"混ざる"},
+    {q:"毒物が 'まじる'", ans:"混じる"},
+    {q:"不純物が 'こんにゅう' する", ans:"混入"},
+    {q:"願い事が 'じつげん' する", ans:"実現"},
+    {q:"絵で 'ひょうげん' する", ans:"表現"},
+    {q:"理想と 'げんじつ' のちがい", ans:"現実"},
+    {q:"'げんだい' の若者たち", ans:"現代"},
+    {q:"早寝早起きの 'しゅうかん' をつける", ans:"習慣"},
+    {q:"新しいクラスに 'なれる'", ans:"慣れる"},
+    {q:"'えいえん' のスター", ans:"永遠"},
+    {q:"'すえながく' お幸せに", ans:"末永く"},
+    {q:"'ながい' 眠りにつく", ans:"永い"},
+    {q:"'じょうやとう' をつける", ans:"常夜灯"},
+    {q:"'ひにちじょうてき' な出来事", ans:"非日常的"},
+    {q:"'ぜったいぜつめい' のピンチ", ans:"絶体絶命"},
+    {q:"連絡が 'たえる'", ans:"絶える"},
+    {q:"悪の根を 'たやす'", ans:"絶やす"},
+    {q:"望みが 'たたれる'", ans:"絶たれる"},
+    {q:"'えいきゅう' に変わらぬ愛", ans:"永久"},    
+    {q:"'じきゅうそう' はきつい", ans:"持久走"}
+];
+
 // ４年生用の問題を登録する
 var question4nen = [
     //    {q:"", ans:""},
+    {q:"友情が 'めばえる'", ans:"芽生える"},
     {q:"'しゅうい' を見回す", ans:"周囲"},
     {q:"強い 'りきし'", ans:"力士"},
     {q:"'うめ' ぼし", ans:"梅"},
@@ -578,6 +622,7 @@ var question4nen = [
     {q:"秋の 'みかく'", ans:"味覚"}   
 ];
 
+// ２年生用の問題を登録する
 var question2nen = [
     //    {q:"", ans:""},
     {q:"大きな 'こえ'", ans:"声"},
@@ -630,6 +675,7 @@ var question2nen = [
     {q:"'ちょうれい' に出る", ans:"朝れい"}
 ];
 
+// １年生用の問題を登録する
 var question1nen = [
     {q:"'きゅうじつ' をすごす", ans:"休日"},
     {q:"水の中で 'いきる' さかな", ans:"生きる"},
@@ -838,6 +884,34 @@ var app = new Vue({
     isCheck: 0
   },
   methods: {
+    start5nen: function() {
+        app.answers = [];
+        app.isCheck = 0;
+        var labelSet = [];
+        var answerSet = [];
+        var count = 0;
+
+        do {
+            var label = Math.floor( Math.random() * question5nen.length );
+            if(labelSet.indexOf(label) == -1) {
+                labelSet.push(label);
+            }
+        } while (labelSet.length != 10)
+
+        function loop(){
+            if(count > 9){
+                app.question = "おわり";
+                app.isCheck = 1;                
+                return;
+            }
+            app.question = (count + 1) + ".　" + question5nen[labelSet[count]]['q'];
+            answerSet.push(question5nen[labelSet[count]]);
+            count++;        
+            setTimeout(loop,10500)
+        }
+        loop();
+        app.answers = answerSet;
+      },
       start4nen: function() {
         app.answers = [];
         app.isCheck = 0;
