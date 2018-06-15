@@ -996,9 +996,9 @@ var app = new Vue({
   },
   watch: {
     question: function () {
-        var element = document.getElementById('question');                
-        element.classList.add('animated', 'bounce');
-        setTimeout(function(){ element.classList.remove('animated', 'bounce'); }, 1000);
+//        var element = document.getElementById('question');                
+//        element.classList.add('animated', 'bounce');
+//        setTimeout(function(){ element.classList.remove('animated', 'bounce'); }, 1000);
     }
   },
   methods: {
@@ -1024,7 +1024,7 @@ var app = new Vue({
             }
             app.question = (count + 1) + ".　" + question5nen[labelSet[count]]['q'];
             answerSet.push(question5nen[labelSet[count]]);
-            count++;        
+            count++;
             setTimeout(loop,10500);
         }
         loop();
