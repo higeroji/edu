@@ -7,6 +7,7 @@
     <title>漢字テスト</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 <body>
@@ -23,17 +24,19 @@
           <div class="hero is-bold is-light">
             <div class="hero-body">
               <div class="container">
-                <h1 class="title">{{ question }}</h1>
+                <h1 class="title" id="question">{{ question }}</h1>
               </div>
             </div>
           </div>
           <!--ul v-show="isCheck"-->
           <section class="section" v-show="isCheck">
+            <div class="subtitle">
             <ol type="1">
               <li v-for="item in answers">
-                {{ item.q }}：{{ item.ans }}
+                {{ item.q }}：<b class="has-text-link">{{ item.ans }}</b>
               </li>
             </ol>
+            </div>
           </section>
           <!--/ul-->
         </section>
