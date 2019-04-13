@@ -1,6 +1,5 @@
 // 6年生用の問題を登録する
-var question6nen = [
-];
+var question6nen = [];
 
 var question5nen = [
     //    {q:"", ans:""},
@@ -1081,8 +1080,7 @@ var question4nen = [
 ];
 
 // 3年生用の問題を登録する
-var question3nen = [
-];
+var question3nen = [];
 
 // ２年生用の問題を登録する
 var question2nen = [
@@ -1865,13 +1863,11 @@ var app = new Vue({
         var labelSet = [];
         var answerSet = [];
         var count = 0;
-        var questionTotal = [];
-        questionTotal.concat(question1nen);
-        questionTotal.concat(question2nen);
-        questionTotal.concat(question3nen);
-        questionTotal.concat(question4nen);
-        questionTotal.concat(question5nen);
-        questionTotal.concat(question6nen);
+        var questionTotal = question1nen.concat(question2nen);
+        questionTotal = questionTotal.concat(question3nen);
+        questionTotal = questionTotal.concat(question4nen);
+        questionTotal = questionTotal.concat(question5nen);
+        questionTotal = questionTotal.concat(question6nen);
 
         do {
             var label = Math.floor( Math.random() * questionTotal.length );
