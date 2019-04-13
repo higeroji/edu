@@ -1,3 +1,7 @@
+// 6年生用の問題を登録する
+var question6nen = [
+];
+
 var question5nen = [
     //    {q:"", ans:""},
     {q:"'どうとく' の時間", ans:"道徳"},
@@ -1076,6 +1080,10 @@ var question4nen = [
     {q:"'こうだいむへん' な大地", ans:"広大無辺"}
 ];
 
+// 3年生用の問題を登録する
+var question3nen = [
+];
+
 // ２年生用の問題を登録する
 var question2nen = [
     //    {q:"", ans:""},
@@ -1490,6 +1498,24 @@ var question2nen = [
     {q:"クラス会の 'つうち' を出す", ans:"通知"},
     {q:"車が道の左がわを 'つうこう' する", ans:"通行"},
     {q:"'ちょくつう' バスで行く", ans:"直通"},
+    {q:"きりんの 'くび'", ans:"首"},
+    {q:"百人 'いっしゅ' をよむ", ans:"一首"},
+    {q:"'ほんとう' の話", ans:"本当"},
+    {q:"'とうばん' になる", ans:"当番"},
+    {q:"'せいとう' にひょうかされる", ans:"正当"},
+    {q:"よそうが 'あたる'", ans:"当たる"},
+    {q:"入学しき 'とうじつ' は雨だった", ans:"当日"},
+    {q:"'あたり' さわりのない話", ans:"当たり"},
+    {q:"'けんとう' をつける", ans:"見当"},
+    {q:"'とうかく' をあらわす", ans:"頭角"},
+    {q:"つくえの 'かど' に足をぶつける", ans:"角"},
+    {q:"トナカイの 'つの'", ans:"角"},
+    {q:"'ほうがく' をしらべる", ans:"方角"},
+    {q:"'ちょっかく' に交わる線", ans:"直角"},
+    {q:"'あたま' をつかう", ans:"頭"},
+    {q:"'ずじょう' にちゅういする", ans:"頭上"},
+    {q:"'きょうとう' 先生にあいさつする", ans:"教頭"},
+    {q:"れつの 'せんとう' に立つ", ans:"先頭"},
 //    {q:"", ans:""},
 
     // 四字熟語
@@ -1827,6 +1853,41 @@ var app = new Vue({
             }
             app.question = (count + 1) + ".　" + question1nen[labelSet[count]]['q'];
             answerSet.push(question1nen[labelSet[count]]);
+            count++;        
+            setTimeout(loop,10500)
+        }
+        loop();
+        app.answers = answerSet;
+      },
+      startTotal: function() {
+        app.answers = [];
+        app.isCheck = 0;
+        var labelSet = [];
+        var answerSet = [];
+        var count = 0;
+        var questionTotal = [];
+        questionTotal.concat(question1nen);
+        questionTotal.concat(question2nen);
+        questionTotal.concat(question3nen);
+        questionTotal.concat(question4nen);
+        questionTotal.concat(question5nen);
+        questionTotal.concat(question6nen);
+
+        do {
+            var label = Math.floor( Math.random() * questionTotal.length );
+            if(labelSet.indexOf(label) == -1) {
+                labelSet.push(label);
+            }
+        } while (labelSet.length != 10)
+
+        function loop(){
+            if(count > 9){
+                app.question = "おわり";
+                app.isCheck = 1;                
+                return;
+            }
+            app.question = (count + 1) + ".　" + questionTotal[labelSet[count]]['q'];
+            answerSet.push(questionTotal[labelSet[count]]);
             count++;        
             setTimeout(loop,10500)
         }
