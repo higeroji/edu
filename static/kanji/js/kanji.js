@@ -2667,7 +2667,7 @@ var app = new Vue({
     }
   },
   methods: {
-    startn6nen: function() {
+    start6nen: function() {
         app.answers = [];
         app.isCheck = 0;
         var labelSet = [];
